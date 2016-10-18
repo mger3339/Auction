@@ -1,0 +1,15 @@
+<div class="container" ng-controller="UserProductController">
+    <div class="text-center">
+        <div ng-repeat="(key, product) in products" class="col-md-3 col-sm-6 hero-feature">
+            <div class="thumbnail">
+                <img ng-src="../assets/product-images/[[product.img]]">
+                <div class="caption">
+                    <h4><a href="/products/[[product.id]]">[[product.name]]</a></h4>
+                    <h5>Streted Price: <small>[[product.started_price]]$</small></h5>
+                    <h5>Real Price: <small>[[product.real_price]]$</small></h5>
+                    <h6>Started Time: [[product.started_time | date:'MM-dd-yyyy HH:mm:ss']]</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

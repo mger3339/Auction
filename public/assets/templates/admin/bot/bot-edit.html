@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="col-md-6 center-block">
+        <div class="panel panel-success" ng-controller="BotDetailsController">
+            <div class="panel-heading">Edit Bot</div>
+            <div class="panel-body" ng-controller="BotEditController">
+                <form id="edit-product-form">
+                    <div class="form-group">
+                        <label for="edit-bot-name">Bot Name:</label>
+                        <input type="text" class="form-control" name="name" ng-model="bot.name" id="edit-bot-name">
+                    </div>
+                    <button data-id="[[bot.id]]" ng-click="updateBot($event)" class="btn btn-success">UPDATE</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,68 @@
+<div class="container" ng-app="datepicker">
+    <div class="col-md-6 center-block">
+        <div class="panel panel-success" ng-controller="ProductDetailsController">
+            <div class="panel-heading">Edit product</div>
+            <div class="panel-body">
+                <form id="edit-product-form" ng-controller="ProductEditController">
+                    <div class="form-group">
+                        <label for="product-name">Product Name:</label>
+                        <input type="text" class="form-control" name="name" ng-model="product.name" id="product-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description:</label>
+                        <textarea class="form-control" name="description" ng-model="product.description" rows="5" id="description"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="startPrice">Started Price:</label>
+                                <input type="text" class="form-control" name="startPrice" ng-model="product.started_price" id="startPrice">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="realPrice">Real Price:</label>
+                                <input type="text" class="form-control" name="realPrice" ng-model="product.real_price" id="realPrice">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-controller="SelectBotsController">
+                        <input type="hidden" name="selectHidden" value="" ng-model="selectHidden"/>
+                        <md-input-container>
+                            <label>Select Bots</label>
+                            <md-select ng-model="selectedBots"
+                                       md-on-close="clearSearchTerm()"
+                                       ng-change="selectChanged()"
+                                       data-md-container-class="selectdemoSelectHeader"
+                                       multiple>
+                                <md-select-header class="demo-select-header">
+                                    <input ng-model="searchTerm"
+                                           type="search"
+                                           placeholder="Search for a bot.."
+                                           class="demo-header-searchbox md-text">
+                                </md-select-header>
+                                <md-optgroup label="bots">
+                                    <md-option ng-repeat="bot in bots | filter:searchTerm" ng-value="bot.id">[[bot.name]]</md-option>
+                                </md-optgroup>
+                            </md-select>
+                        </md-input-container>
+                    </div>
+                    <div class="form-group">
+                        <div layout-gt-md="row" layout="column" layout-align-gt-md="center center" >
+                            <md-input-container class="md-input-has-placeholder flex-gt-md-100 md-input-has-value md-input-focused">
+                                <label for="datetime">Started time</label>
+                                <input mdc-datetime-picker="" date="true" time="true" type="text" id="datetime" placeholder="Date" min-date="date" ng-model="product.started_time" class="from-control ng-pristine ng-valid ng-isolate-scope md-input ng-touched" aria-invalid="false" style="">
+                            </md-input-container>
+                            <div  flex-gt-md="grow" ex-source-code target="input"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="file" ngf-select ng-model="picFile" name="file" accept="image/*" />
+                        <br>
+                        <img ngf-thumbnail="picFile" class="thumb" />
+                        <button ng-click="picFile = null" ng-show="picFile">Remove</button>
+                    </div>
+                    <button ng-click="updateProduct(picFile)" class="btn btn-success">UPDATE</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,65 @@
+<div class="row">
+    <div class="container">
+        <div class="col-md-3">
+            <div class="product col-md-12">
+                <img id="item-display" ng-src="../assets/product-images/[[product.img]]" alt=""/>
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <div class="product-title">[[product.name]]</div>
+            <hr>
+            <div class="product-desc">[[product.description]]</div>
+            <hr>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="product-price">Started Price: [[product.started_price | currency]]</div>
+                    <div class="product-price">Real Price: [[product.real_price | currency]]</div>
+                </div>
+                <div class="col-md-6" data-status="[[auction]]">
+                    <div ng-if="!auction" class="product-stock"> Before the start: <span data-id="[[product.id]]" countdown="" date="[[date]]"></span></div>
+                    <div ng-if="status" class="product-stock"> Auction winner: <span>[[bidUser.name]] </span></div>
+                    <div ng-if="status" class="product-stock"> Price: <span>[[bidUser.price | currency]] </span></div>
+                    <div ng-if="auction" class="">
+                        <div class="auction">
+                            <div class="col-md-12 row">
+                                <div class="col-md-2">
+                                    <div class="timer">[[data.time]]</div>
+                                </div>
+                                <div class="col-md-10">
+                                    <div class="col-md-8">Current bid:</div>
+                                    <div class="col-md-4">[[product.started_price | currency]]</div>
+                                </div>
+                                <div class="col-md-12" ng-controller="UserBidController">
+                                    <button type="button" data-id="[[product.id]]" ng-click="makeBid($event)" class="btn btn-success pull-right">Bid</button>
+                                </div>
+                                <div class="col-md-2">Bids:</div>
+                                <div class="col-md-10">
+                                    <ul class="list-group auction-ul">
+                                        <li ng-repeat="(key, bid) in bids" class="list-group-item">
+                                            <span class="bid-number">[[key + 1]].</span>
+                                            <span class="bid-name">[[bid.name]]</span>
+                                            <span class="bid-price">[[bid.price | currency]]</span>
+                                            <div class="bid-date">[[bid.date * 1000 | date:'MM-dd-yyyy HH:mm:ss']]</div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <!--<div class="btn-group cart">-->
+                <!--<button type="button" class="btn btn-success">-->
+                    <!--Add to cart-->
+                <!--</button>-->
+            <!--</div>-->
+            <!--<div class="btn-group wishlist">-->
+                <!--<button type="button" class="btn btn-danger">-->
+                    <!--Add to wishlist-->
+                <!--</button>-->
+            <!--</div>-->
+        </div>
+    </div>
+</div>

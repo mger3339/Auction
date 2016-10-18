@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="col-md-6 center-block">
+        <div class="panel panel-success">
+            <div class="panel-heading">Add new bot</div>
+            <div class="panel-body">
+                <form id="create-bot-form" name="createBotForm">
+                    <div class="form-group">
+                        <label for="add-bot-name">Bot Name:</label>
+                        <input type="text" class="form-control" name="botName" ng-model="botName" id="add-bot-name" required>
+                    </div>
+                    <div class="col-md-12">
+                        <button ng-click="addBot()" class="btn btn-success">SAVE</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

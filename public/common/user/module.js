@@ -1,0 +1,1 @@
+var user = angular.module('user',['ngRoute', 'ngMaterial', 'ui.router']);

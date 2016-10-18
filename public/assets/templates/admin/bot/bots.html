@@ -1,0 +1,23 @@
+<div class="container">
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th style="width:5%;">#</th>
+                    <th style="width:55%;">Name</th>
+                    <th style="width:20%;">Created</th>
+                    <th style="width:20%;">Action</th>
+                </tr>
+                <tr ng-repeat="(key, bot) in bots">
+                    <td>[[key + 1]]</td>
+                    <td>[[bot.name]]</td>
+                    <td>[[bot.created_at]]</td>
+                    <td>
+                        <div class="col-md-12">
+                            <a class="btn btn-success" href="/admin/bots/edit/[[bot.id]]">EDIT</a>
+                            <button type="button" data-index="[[key]]" data-id="[[bot.id]]" ng-click="showConfirm($event)" class="btn btn-danger">Delete</button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</div>
